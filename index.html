@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html" charset="UTF-8" />
+<title>Type Zebra - Test your fonts in a web browser</title>
 <meta name="Description" content="Type Zebra lets you test your fonts in a web browser." /> 
 <link rel="icon" href="favicon.ico" type="image/x-icon"> 
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <link rel="prerender" href="http://typezebra.com/index.html">
-<title>Type Zebra - Test your fonts in a web browser</title>
 <meta property="og:title" content="Type Zebra - Local Font Manager"/>
 <meta property="og:type" content="website"/>
 <meta property="og:image" content="http://typezebra.com/img/typezebra-fb.png"/>
@@ -111,19 +111,19 @@ a#logo h1 , a#logo img {
   right:0px; 
   bottom:0px;
 }
-#sidebar li a {
-  padding: 5px 0 5px 10px;
+#sidebar li{
+  padding: 8px 0 5px 10px;
   display: block;
   text-decoration: none;
   color: #999;
   font-size: 13px;
 }
-#sidebar li a:hover {
+#sidebar li:hover {
   color: #fff;
   background: #50B95C;
   cursor: pointer;
 }
-#list a.active {
+li.active {
   background-color: #fff;
   color: #000;
 }
@@ -287,6 +287,8 @@ var scharacters = document.getElementById('smalls'),
 for(var i=97;i<=122;i++) {
   schars += '<li>' + String.fromCharCode(i) + '</li>';
 }
+
+
 var fonts;
 function loadFonts(fd) {
   fonts = fd.fonts();
@@ -294,24 +296,21 @@ function loadFonts(fd) {
   for(var i = 0; i < fonts.length; i++) {
     var name = fonts[i].fontName;
     var nameNode = document.createElement("li");
-    $(nameNode).addClass("font-name");
-    $(nameNode).html("<a class='lol'>" + name + "</a>");
+    $(nameNode).addClass("font-name").attr('data-name', name).html(name);
     $("#list").append(nameNode);
-    $(nameNode).attr('data-name', name);
+    bindClick(nameNode);
   }
-  bindClick();
 }
-function bindClick() {
-  $('#list li a').on('click', function() {
-    $('#list li a').removeClass('active');
-    $('#alphabets').css('font-family',($(this).parent().attr('data-name')));
-    $('#smalls').css('font-family',   ($(this).parent().attr('data-name')));
-    $('#maintext').css('font-family', ($(this).parent().attr('data-name')));
-    $('#numbers').css('font-family',  ($(this).parent().attr('data-name')));
-    $('#para1').css('font-family',  ($(this).parent().attr('data-name')));
+
+function bindClick(nameNode) {
+  $(nameNode).click(function() {
+    $('#list li').removeClass('active');
     $(this).addClass('active');
-  })
-}
+    $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', $(this).attr('data-name'));
+  });
+} 
+
+
 $(document).ready(function() {
   // Check Flash version
   if (!swfobject.hasFlashPlayerVersion("9.0.0"))
