@@ -321,7 +321,7 @@ function loadFonts(fd) {
     var name = fonts[i].fontName;
     var nameNode = document.createElement("li");
     $(nameNode).addClass("font-name");
-    $(nameNode).html("<a href='#' class='lol'>" + name + "</a>");
+    $(nameNode).html("<a class='lol'>" + name + "</a>");
     $("#list").append(nameNode);
     $(nameNode).attr('data-name', name);
   }
