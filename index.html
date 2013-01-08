@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="Description" content="Type Zebra lets you test your fonts in a web browser." /> 
+<link rel="icon" href="/img/zebra.ico" type="image/x-icon"> 
+<link rel="prerender" href="http://typezebra.com/index.html">
+<title>Type Zebra - Test your fonts in a web browser</title>
+<style type="text/css">
+@font-face {
+    font-family: 'MarkerfieldRegular';
+    src: url('/fonts/markerfield/markerfield-webfont.eot');
+    src: url('/fonts/markerfield/markerfield-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/markerfield/markerfield-webfont.woff') format('woff'),
+         url('/fonts/markerfield/markerfield-webfont.ttf') format('truetype'),
+         url('/fonts/markerfield/markerfield-webfont.svg#MarkerfieldRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'avenir-roman';
+    src: url('/fonts/avenir/avenir-roman.eot');
+    src: url('/fonts/avenir/avenir-roman.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/avenir/avenir-roman.woff') format('woff'),
+         url('/fonts/avenir/avenir-roman.ttf') format('truetype'),
+         url('/fonts/avenir/avenir-roman.svg#MarkerfieldRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+* {margin:0;padding:0}
+body {
+  font-family: 'avenir-roman', ‘Helvetica Neue’, Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  overflow: hidden;
+  text-rendering: optimizeLegibility;
+}
+html, body {
+    height: 100%
+}
+#top {
+  position: absolute;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+}
+
+#top select#selectList {position:absolute;top:16px;left:369px;}
+#top select#selectMode {position:absolute;top:16px;left:240px;}
+
+.typezebra {vertical-align: bottom; display: inline-block; width: 44px; height: 35px;}
+.typezebra-black { background: url(/img/typezebra-logo.png) 0px 0px no-repeat; }
+.typezebra-white { background: url(/img/typezebra-logo.png) -44px 0px no-repeat; }
+
+.noprint {float: left;}
+a#logo {
+  display: inline-block;
+  font-family: MarkerfieldRegular;
+  text-decoration: none;
+  color: black;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: white;
+  padding: 4px 0px 8px 20px;
+  width: 200px;
+}
+a#logo h1 , a#logo img { 
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+a#logo h1 , #seclogo h1 {display: inline-block;margin-right: 10px;}
+
+#seclogo {
+  display: inline-block;
+  font-family: MarkerfieldRegular;
+  text-decoration: none;
+  color: #fff;
+  margin: 45px 0 0 60px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+#status {display: none;}
+
+#sidebar {
+  width: 220px;
+  background: #000;
+  overflow: auto;
+  margin-top: 50px;
+  position:absolute; 
+  top: 0px; 
+  left:0px; 
+  right:0px; 
+  bottom:0px;
+}
+#sidebar li a {
+  padding: 5px 0 5px 10px;
+  display: block;
+  text-decoration: none;
+  color: #999;
+  font-size: 13px;
+}
+#sidebar li a:hover {
+  color: #fff;
+  background: #50B95C;
+}
+#sidebar li a.active {
+  background-color: #fff;
+  color: #000;
+}
+#content {
+  margin-left: 220px;
+  overflow: auto;
+  margin-top: 50px;
+  position:absolute; 
+  top: 0px; 
+  left:0px; 
+  right:0px; 
+  bottom:0px;
+  z-index: 1;
+}
+#alphabets li , #numbers li , #smalls li {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  width: 33.3%;
+  padding: 0;
+}
+#numbers li {width: 25%;}
+.d1{background: #2f2f2f;color: #fff;}
+.d2{background: #eeeeee;color: #000;}
+.d3{background: #ffffff;color: #000;}
+.d4{background: #cccccc;color: #fff;}
+.d5{background: #000000;color: #fff;}
+
+[contenteditable]:hover:not(:focus) {
+  outline: 1px dotted #ccc;
+}
+
+#alphabets , #numbers, #smalls {font-size: 120px;}
+#maintext {font-size: 60px;}
+#maintext , #alphabets , #numbers , #smalls , #para1 {padding: 20px;}
+
+#para1 blockquote {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    font-size: 26px;
+    line-height: 50px;
+    font-style: italic;
+    font-weight: 400;
+    text-align: left;
+    text-indent: 16px;
+}
+
+#para1 h1 {
+    font-size: 63px;
+    line-height: 100px;
+    margin-bottom: 25px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#para1 h2 {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-size: 30px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#para1 p {
+    margin-bottom: 0px;
+    text-indent: 16px;
+}
+
+#para1 p.author {
+    text-indent: 0px;
+    margin-bottom: 25px;
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: #666464;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#para1 p.first {
+    text-indent: 0px;
+}
+
+#para1 p.intro {
+    text-indent: 0px;
+    margin-bottom: 25px;
+    line-height: 50px;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0px;
+}
+
+#clickinfo {
+  font-size: 28px;
+  right: 18px;
+  top: 8px;
+  color: #fff;
+  position: absolute;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 100;
+  padding: 2px 10px;
+}
+
+.arrow_box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.9)!important;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 3px!important;
+  color: rgba(255, 255, 255, 0.9)!important;
+  padding: 0 30px 40px 30px;
+  overflow: auto;
+  z-index: 10;
+}
+
+#faq p {
+  font-size: 14px;
+}
+
+#faq p:first-child {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+#faq p:last-child {
+  margin: 5px 0 20px 0;
+}
+
+.arrow_box p {
+  margin: 20px 0 40px 0;
+}
+.arrow_box h3 {text-align: center;}
+
+.arrow_box a {text-decoration: none; color: #50B95C;}
+
+.rotate {
+  -webkit-animation-name: cssAnimation;
+  -webkit-animation-duration: .3s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: none;
+}
+
+@-webkit-keyframes cssAnimation {
+  from {
+    -webkit-transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(45deg);
+  }
+}
+
+.blockMsg {
+  padding: 15px;
+  -webkit-border-radius: 6px; 
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+
+</style>
+<script src="js/jquery.min.js"></script>
+<script src="js/swfobject.js"></script>
+<script src="js/font-detect.js"></script>  
+<script src="js/jquery.blockUI.js"></script>
+
+<script>
+var number = document.getElementById('numbers'),
+  nums = ''
+var objects = '0123456789'.split('');
+for(obj in objects) {
+  nums += '<li>' + objects[obj] + '</li>';
+}
+
+var alphabet = document.getElementById('alphabet'),
+  letters = '';
+for(var i=65;i<=90;i++) {
+  letters += '<li>' + String.fromCharCode(i) + '</li>';
+}
+
+var scharacters = document.getElementById('smalls'),
+  schars = ''
+for(var i=97;i<=122;i++) {
+  schars += '<li>' + String.fromCharCode(i) + '</li>';
+}
+
+var fonts;
+function loadFonts(fd) {
+  fonts = fd.fonts();
+
+  $("#status span").html("Loaded " + fonts.length + " fonts");
+  for(var i = 0; i < fonts.length; i++) {
+    var name = fonts[i].fontName;
+    var nameNode = document.createElement("li");
+    $(nameNode).addClass("font-name");
+    $(nameNode).html("<a href='#' class='lol'>" + name + "</a>");
+    $("#list").append(nameNode);
+    $(nameNode).attr('data-name', name);
+  }
+  bindClick();
+}
+
+function bindClick() {
+  $('#list li a').on('click', function() {
+    $('#list li a').removeClass('active');
+    $('#alphabets').css('font-family',($(this).parent().attr('data-name')));
+    $('#smalls').css('font-family',   ($(this).parent().attr('data-name')));
+    $('#maintext').css('font-family', ($(this).parent().attr('data-name')));
+    $('#numbers').css('font-family',  ($(this).parent().attr('data-name')));
+    $('#para1').css('font-family',  ($(this).parent().attr('data-name')));
+    $(this).addClass('active');
+  })
+}
+
+
+$(document).ready(function() {
+  // Check Flash version
+  if (!swfobject.hasFlashPlayerVersion("9.0.0"))
+    $("#status .toot").html("You don't have a compatible version of Flash installed. Please install latest version of Flash and refresh this page.");
+  else {
+    $("#status .toot").html("Loading your fonts...")
+    var fontDetect = new FontDetect("font-detect-swf", "flash/FontList.swf", function(fd) {
+      loadFonts(fd);
+      $.unblockUI();
+    });
+  }
+  $.blockUI({ message: $('#status .toot') });
+
+});
+
+</script>
+</head>
+<body>
+  <div id="top">
+    <a href="/" id="logo"><h1>Type Zebra</h1><span class="typezebra typezebra-black"></span></a>
+    <div class="noprint">
+      <p id="status"><span class="toot">Checking Flash version...</span></p>
+    </div>
+    <span id="clickinfo">+</span>
+    <select id="selectList">
+      <option>Change font size</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="16">16</option>
+      <option value="18">18</option>
+      <option value="24">24</option>
+      <option value="30">30</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="60">60</option>
+      <option value="72">72</option>
+      <option value="100">100</option>
+    </select>
+    <select id="selectMode">
+      <option value="usertext">Write your text</option>
+      <option value="paragraph1">Sample Layout</option>
+      <option value="ABC">ABC...</option>
+      <option value="abc">abc...</option>
+      <option value="123">123...</option>
+    </select>
+  </div>
+  <div id="sidebar">
+    <ul id="list">
+    </ul>
+  </div>
+
+  <div id="content">
+    <div id="maintext" contenteditable="true">
+      Type Zebra <span class="typezebra-black" style="vertical-align: baseline;"></span> &ndash; Test your fonts in web browser. <span style="color:#8b8b8b;display:block;">You can edit this text.<br><br>
+      Or you can change mode from select menu on top.</span>
+    </div>
+    <div id="alphabets" style="display:none;"><script type="text/javascript">document.write(letters)</script></div>
+    <div id="smalls" style="display:none;"><script type="text/javascript">document.write(schars)</script></div>
+    <div id="numbers" style="display:none;"><script type="text/javascript">document.write(nums)</script></div>
+    <div id="para1" style="display:none;">
+      <h1>An enticing yet short headline</h1>
+      <p class="author"><em>by</em> SUSHAANTU</p>
+      <p class="intro">An introduction to the article which covers the main ideas &amp; leads the reader to the conclusion.</p>
+      <p class="first">Alice opened the door and found that it led into a small passage, not much larger than a rat-hole: she knelt down and looked along the passage into the loveliest garden you ever saw. How she longed to get out of that dark hall, and wander about among those beds of bright flowers and those cool fountains, but she could not even get her head through the doorway; "and even if my head would go through," thought poor Alice, "it would be of very little use without my shoulders.</p>
+      <p>After a time she heard a little pattering of feet. In the distance, and she hastily dried her eyes to see what was coming. It was the White Rabbit returning, splendidly dressed, with a pair of white kid-gloves in one hand and a large fan in the other: he came trotting along in a great hurry, muttering to himself, as he came, "Oh! The Duchess, the Duchess! Oh! Won't she be savage if I've kept her waiting!"</p>
+      <h2>A second level heading</h2>
+      <p>The first question of course was, how to get dry again: they had a consultation about this, and after a few minutes it seemed quite natural to Alice to find herself talking familiarly with them, as if she had known them all her life. Indeed, she had quite a long argument with the Lory, who at last turned sulky, and would only say, "I’m older than you, and must know better."</p>
+      <blockquote>"Begin at the beginning," the King said, very gravely, "and go on till you come to the end: then stop."<br /></blockquote>
+      <p>Very soon the Rabbit noticed Alice, as she went hunting about, and called out to her, in an angry tone, "Why, Mary Ann, what are you doing out here? Run home this moment, and fetch me a pair of gloves and a fan! Quick, now!" And Alice was so much frightened that she ran off at once in the direction it pointed to, without trying to explain the mistake that it had made.</p>
+      <p>"I know <em>something</em> interesting is sure to happen," she said to herself, "whenever I eat or drink anything: so I'll just see what this bottle does. I do hope it'll make me grow large again, for really I’m quite tired of being such a tiny little thing!"</p>
+      <blockquote>"<em>You used to be much more..."muchier." You've lost your muchness.</em>"</blockquote>
+      <p>"Take some more tea," the March Hare said to Alice, very earnestly. "I've had nothing yet," Alice replied in an offended tone, "so I can't take more." "You mean you can't take less," said the Hatter: "it's very easy to take more than nothing." "Nobody asked your opinion," said Alice."</p>
+      <p><br class="GENTICS_ephemera" /></p><p class="author">Excerpts from Lewis Carrol's <em>Alice in Wonderland</em>.</p>
+    </div>
+  </div>
+
+  <div class="arrow_box">
+    <div id="seclogo"><h1>Type Zebra</h1><span class="typezebra typezebra-white"></span></div>
+    <p>Type Zebra lets you test your locally installed typefaces in a web browser. It's your local font manager.</p>
+
+    <div id="faq">
+      <h3>FAQ</h3>
+      <div>
+        <p>Who is it for?</p>
+        <p>Type Zebra is for typeface designers, web designers and other creatives who care about how their typefaces appear in web browsers.</p>
+      </div>
+
+      <div>
+        <p>Why should I use it?</p>
+        <p>The type rendering of web browser varies greatly from native applications. It's best to check how your typefaces render in a web browser before choosing for your web designs.</p>
+      </div>
+
+      <div>
+        <p>I just installed some fonts. I can't see them here. Why?</p>
+        <p>Restart your web browser and then visit this page.</p>
+      </div>
+      
+      <div>
+        <p>Who created it?</p>
+        <p>It was created by <a href="http://www.sushaantu.com" target="_blank">Sushaantu</a>. He is UX Designer based in Santiago, Chile.</p>
+      </div>
+
+      <div>
+        <p>How can I contact you regarding bugs and features?</p>
+        <p><a href="http://sushimashi.wufoo.com/forms/q7x3p3/" onclick="window.open(this.href,  null, 'height=378, width=680, toolbar=0, location=0, status=1, scrollbars=1, resizable=1'); return false">Use this form.</a></p>
+      </div>
+
+    </div><!-- end of #faq -->
+  </div><!-- end of .arrow_box -->
+    
+  <div id="font-detect-swf"></div>
+</body>
+
+
+<script>
+var changeSize = function(){
+  var text = $('#selectList').val();
+  var textpx = $('#alphabets').css('font-size', text + 'px');
+  var textpx = $('#maintext').css('font-size', text + 'px');
+  var textpx = $('#smalls').css('font-size', text + 'px');
+  var textpx = $('#numbers').css('font-size', text + 'px');
+};
+$('#selectList').on('change', function() { changeSize(); });
+
+var changeMode = function(){
+  var value = $('#selectMode').val();
+  if (value == "usertext") {
+    $('#maintext').show();
+    $('#selectList').show();
+    $('#alphabets').hide();
+    $('#numbers').hide();
+    $('#smalls').hide();
+    $('#para1').hide();
+  }
+  else if(value == "abc") {
+    $('#smalls').show();
+    $('#selectList').show();
+    $('#maintext').hide();
+    $('#alphabets').hide();
+    $('#numbers').hide();
+    $('#para1').hide();
+  }
+  else if(value == "123") {
+    $('#numbers').show();
+    $('#selectList').show();
+    $('#maintext').hide();
+    $('#alphabets').hide();
+    $('#smalls').hide();
+    $('#para1').hide();
+  }
+  else if(value == "paragraph1") {
+    $('#para1').show();
+    $('#maintext').hide();
+    $('#alphabets').hide();
+    $('#smalls').hide();
+    $('#numbers').hide();
+    $('#selectList').hide();
+  }
+  else {
+    $('#alphabets').show();
+    $('#selectList').show();
+    $('#maintext').hide();
+    $('#numbers').hide();
+    $('#smalls').hide();
+    $('#para1').hide();
+  }
+}
+
+$('#selectMode').on('change', function() { changeMode(); });
+
+
+$('span#clickinfo').click(function() { 
+    $('.arrow_box').toggle();
+    $(this).toggleClass('rotate');
+});
+
+</script>
+
+</html>
