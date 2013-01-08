@@ -306,10 +306,9 @@ function bindClick(nameNode) {
   $(nameNode).click(function() {
     $('#list li').removeClass('active');
     $(this).addClass('active');
-    $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', $(this).attr('data-name'));
+    $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', '"' + $(this).attr('data-name') + '"');
   });
 } 
-
 
 $(document).ready(function() {
   // Check Flash version
@@ -400,11 +399,6 @@ $(document).ready(function() {
       <div>
         <p>Why should I use it?</p>
         <p>The type rendering of web browser varies greatly from native applications. It's best to check how your typefaces render in a web browser before choosing for your web designs.</p>
-      </div>
-
-      <div>
-        <p>Some fonts don't appear. Why?</p>
-        <p>Fonts which have number (eg Bauhaus 93, Avenir 45 etc.) in their names are not displaying currently. It's a bug which will be fixed soon.</p>
       </div>
 
       <div>
