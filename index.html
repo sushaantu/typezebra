@@ -270,6 +270,40 @@ a#logo h1 , a#logo img {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
+
+#tell {
+  position: absolute;
+  top: -4px;
+  right: 200px;
+  font-size: 14px;
+  background: #50B95C;
+  padding: 7px 27px 3px 10px;
+  border-radius: 3px;
+}
+
+#tell a {
+  color: #fff;
+  text-decoration: none;
+}
+.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  float: right;
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  top: 3px;
+  position: absolute;
+  right: 6px;
+}
 </style>
 <script>
 var number = document.getElementById('numbers'),
@@ -332,6 +366,7 @@ $(document).ready(function() {
     <div class="noprint">
       <p id="status"><span class="toot"></span></p>
     </div>
+    <div id="tell"><a href="https://chrome.google.com/webstore/detail/type-zebra/jmdiammbeecojdgoiecmhfmkmafdomdm" target="_blank">Now available on Chrome Web Store</a><span class="close">&times;</span></div>
     <span id="clickinfo">+</span>
     <select id="selectList">
       <option>Change font size</option>
@@ -388,7 +423,7 @@ $(document).ready(function() {
 
   <div class="arrow_box">
     <div id="seclogo"><h1>Type Zebra</h1><span class="typezebra typezebra-white"></span></div>
-    <p>Type Zebra is a local font explorer. It lets you test your locally installed typefaces in a web browser.</p>
+    <p>Type Zebra is a local font explorer. It lets you test your locally installed typefaces in a web browser. <a href="https://chrome.google.com/webstore/detail/type-zebra/jmdiammbeecojdgoiecmhfmkmafdomdm" target="_blank">Now available on Chrome web store.</a></p>
 
     <div id="faq">
       <h3>FAQ</h3>
@@ -489,6 +524,10 @@ $('#selectMode').on('change', function() { changeMode(); });
 $('span#clickinfo').click(function() { 
     $('.arrow_box').toggle();
     $(this).toggleClass('rotate');
+});
+
+ $(".close").click(function () {
+  $("#tell").hide();
 });
 
 </script>
