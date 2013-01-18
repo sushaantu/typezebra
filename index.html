@@ -59,7 +59,8 @@ html, body {
   color: #fff;
   height: 50px;
 }
-#top select#selectList {position:absolute;top:16px;left:369px;}
+
+#selectList {position:absolute;top:16px;left:440px;}
 #top select#selectMode {position:absolute;top:16px;left:240px;}
 .typezebra {vertical-align: bottom; display: inline-block; width: 44px; height: 35px;}
 .typezebra-black { background: url(img/typezebra-logo.png) 0px 0px no-repeat; }
@@ -311,6 +312,30 @@ a#logo h1 , a#logo img {
   opacity: 0.4;
   filter: alpha(opacity=40);
 }
+
+/* Slider */
+.slider {
+  width: 100px;
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  left: 362px;
+}
+
+.slider > .dragger {
+  background: #50B95C;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+}
+
+.slider > .track {
+  background: #686868;
+  height: 4px;
+  border-radius: 10px;
+}
+
+
 </style>
 <script>
 var number = document.getElementById('numbers'),
@@ -375,21 +400,8 @@ $(document).ready(function() {
     </div>
     <div id="tell"><a href="https://chrome.google.com/webstore/detail/type-zebra/jmdiammbeecojdgoiecmhfmkmafdomdm" target="_blank">Now available in Chrome Web Store</a><span class="close">&times;</span></div>
     <span id="clickinfo">+</span>
-    <select id="selectList">
-      <option>Change font size</option>
-      <option value="12">12</option>
-      <option value="13">13</option>
-      <option value="14">14</option>
-      <option value="16">16</option>
-      <option value="18">18</option>
-      <option value="24">24</option>
-      <option value="30">30</option>
-      <option value="36">36</option>
-      <option value="48">48</option>
-      <option value="60">60</option>
-      <option value="72">72</option>
-      <option value="100">100</option>
-    </select>
+    <input type="text" data-slider-range="10,200" value="100" data-slider="true" id="selectList">
+    <span class="output"></span>
     <select id="selectMode">
       <option value="usertext">Write your text</option>
       <option value="paragraph1">Sample Layout</option>
@@ -485,7 +497,7 @@ var changeMode = function(){
   var value = $('#selectMode').val();
   if (value == "usertext") {
     $('#maintext').show();
-    $('#selectList').show();
+    $('.slider').show();
     $('#alphabets').hide();
     $('#numbers').hide();
     $('#smalls').hide();
@@ -493,7 +505,7 @@ var changeMode = function(){
   }
   else if(value == "abc") {
     $('#smalls').show();
-    $('#selectList').show();
+    $('.slider').show();
     $('#maintext').hide();
     $('#alphabets').hide();
     $('#numbers').hide();
@@ -501,7 +513,7 @@ var changeMode = function(){
   }
   else if(value == "123") {
     $('#numbers').show();
-    $('#selectList').show();
+    $('.slider').show();
     $('#maintext').hide();
     $('#alphabets').hide();
     $('#smalls').hide();
@@ -514,10 +526,11 @@ var changeMode = function(){
     $('#smalls').hide();
     $('#numbers').hide();
     $('#selectList').hide();
+    $('.slider').hide();
   }
   else {
     $('#alphabets').show();
-    $('#selectList').show();
+    $('.slider').show();
     $('#maintext').hide();
     $('#numbers').hide();
     $('#smalls').hide();
