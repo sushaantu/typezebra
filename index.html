@@ -257,12 +257,6 @@ a#logo h1 , a#logo img {
     -webkit-transform: rotate(45deg);
   }
 }
-.blockMsg {
-  padding: 15px;
-  -webkit-border-radius: 6px; 
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
 
 #tell {
   position: absolute;
@@ -384,10 +378,8 @@ $(document).ready(function() {
     $("#status .toot").html("Loading your fonts...")
     var fontDetect = new FontDetect("font-detect-swf", "flash/FontList.swf", function(fd) {
       loadFonts(fd);
-      $.unblockUI();
     });
   }
-  $.blockUI({ message: $('#status .toot') });
 });
 </script>
 </head>
