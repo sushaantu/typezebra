@@ -47,7 +47,7 @@ a#logo {
   bottom:0px;
 }
 #sidebar li{
-  padding: 8px 0 5px 10px;
+  padding: 7px 0 6px 10px;
   display: block;
   text-decoration: none;
   color: #BEBEBE;
@@ -85,7 +85,7 @@ a#logo {
   outline: 1px dotted #ccc;
 }
 #alphabets , #numbers, #smalls, #maintext{font-size: 60px;}
-#maintext {font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;}
+#maintext {font-family: Georgia, Times, "Times New Roman", serif;}
 #maintext , #alphabets , #numbers , #smalls , #para1 {padding: 20px;}
 #para1 blockquote {
   margin-bottom: 25px;
@@ -141,7 +141,7 @@ a#logo {
 #clickinfo {
   font-size: 28px;
   right: 18px;
-  top: 8px;
+  top: 5px;
   color: #fff;
   position: absolute;
   cursor: pointer;
