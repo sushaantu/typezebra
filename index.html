@@ -61,8 +61,24 @@ function bindClick(nameNode) {
   });
 } 
 
-$(document).ready(function() {
-  // Check Flash version
+function bindKeyPress() {
+  $(document).unbind('keydown').keydown(function(e) {
+    if(e.keyCode == 40 || e.keyCode == 38) {
+      node = $('#list li.active');
+      first = $('#list li:first');
+      last = $('#list li:last');
+      if(e.keyCode == 40) { //down key pressed
+        node = !node.length ? first : (node.attr('data-name') == last.attr('data-name') ? first : node.next());
+      }
+      else if(e.keyCode == 38) {
+        node = !node.length ? first : (node.attr('data-name') == first.attr('data-name') ? last : node.prev());
+      }
+        node.click();
+    }
+    });
+}
+
+$(document).ready(function() { // Check Flash version
   if (!swfobject.hasFlashPlayerVersion("9.0.0"))
     $("#status .toot").html("You don't have a compatible version of Flash installed. Please install latest version of Flash and refresh this page.");
   else {
@@ -71,6 +87,14 @@ $(document).ready(function() {
       loadFonts(fd);
     });
   }
+  $(document).click(function(e) {
+  if($(e.target).parent().attr('id') == 'list') {
+    bindKeyPress();
+  }
+  else {
+    $(document).unbind('keydown');
+  }
+  });
 });
 </script>
 </head>
