@@ -30,10 +30,6 @@ html, body {
   content: "px";
 }
 
-#top:hover #selectList {
-  display: inline-block !important;
-}
-
 #top select#selectMode {position:relative;top:13px;left:240px;}
 .noprint {float: left;}
 a#logo {
@@ -278,4 +274,15 @@ a#logo {
   background: #686868;
   height: 4px;
   border-radius: 10px;
+}
+
+/* Helper class to show input font size field on hover */
+.inv {
+  display: inline-block;
+  width: 464px;
+  height: 50px;
+}
+
+.inv:hover #selectList {
+  display: inline-block !important;
 }
