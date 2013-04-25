@@ -278,7 +278,7 @@ a#logo {
 
 /* Helper class to show input font size field on hover */
 .inv {
-  display: inline-block;
+  display: inline;
   width: 464px;
   height: 50px;
 }
