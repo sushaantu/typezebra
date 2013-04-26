@@ -19,7 +19,7 @@ html, body {
 #selectList {
   position: relative;
   border-radius: 3px;
-  border: none;
+  border: 1px solid #aaa;
   padding: 2px;
   width: 32px;
   display: inline-block !important;
