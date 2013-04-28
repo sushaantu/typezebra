@@ -214,11 +214,14 @@ $(document).ready(function() { // Check Flash version
       item = data.items[item]
       $('#sidebar ul#list').append('<li class="google-font" onclick=\'loadFont("' + item.family + '")\'>' + item.family + '</li>')
     }
-  }, "json")
+  }, "jsonp")
 
   function loadFont(fontFamily){
     $('#lazyloading').attr('href', '//fonts.googleapis.com/css?family=' + fontFamily);
+    $('#list li').removeClass('active');
+    $(this).addClass('active');
     $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', fontFamily);
+
   }
 </script>
 
@@ -236,6 +239,8 @@ $.getJSON('edge.json', function(data){
   })
   $("#sidebar ul#list").empty().append(items)
     .on('click', 'li.edge-font', function() {
+      $('#list li').removeClass('active');
+      $(this).addClass('active');
       loadEdge( $(this).data('edgeFontSlug') );
     });
 });
