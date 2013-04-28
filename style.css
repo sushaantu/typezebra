@@ -64,7 +64,7 @@ a#logo {
 }
 #sidebar li{
   padding: 8px 0 7px 10px;
-  display: block;
+  display: list-item;
   text-decoration: none;
   color: #BEBEBE;
   font-size: 13px;
@@ -306,32 +306,37 @@ ul#services {
   list-style: none;
   margin-left: 240px;
   float: left;
-  margin-top: 26px;
+  margin-top: 17px;
 }
 
 ul#services li {
   display: inline-block;
   float: left;
-}
-
-ul#services li a {
   color: white;
   text-align: center;
-  padding: 10px 17px;
+  padding: 8px 16px;
   text-decoration: none;
   background-color: #50B95C;
 }
 
-ul#services li:first-child a:first-child {
+ul#services li:first-child {
   border-radius: 3px 0 0 3px;
 } 
 
-ul#services li:last-child a:last-child {
+ul#services li:last-child{
   border-radius: 0 3px 3px 0;
 }
 
-ul#services li a.active {
+ul#services li.active {
   background-color: #3D8F47;
+}
+
+ul#services li:hover {
+  cursor: pointer;
+}
+
+#sidebar li.google-font , #sidebar li.edge-font {
+  display: none ;
 }
 
 

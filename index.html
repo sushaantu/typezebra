@@ -8,6 +8,9 @@
 <link rel="icon" href="favicon.ico?1" type="image/x-icon">
 <link rel="prerender" href="http://typezebra.com/index.html">
 <link rel="dns-prefetch" href="//typezebra.com">
+
+<link rel="stylesheet" id="lazyloading">
+
 <meta property="og:url" content="http://typezebra.com"/>
 <meta property="og:title" content="Type Zebra - Font Explorer & Tester"/>
 <meta property="og:type" content="website"/>
@@ -98,6 +101,54 @@ $(document).ready(function() { // Check Flash version
   });
 });
 </script>
+
+
+
+<script type="text/javascript">
+var myArr = [];
+$.getJSON('edge.json', function(data){
+  $.each(data, function(key, value){
+    edgeFontName = value.name;
+    edgeFontSlug = value.slug;
+    myArr.push('<li class="edge-font">' + edgeFontName + '</li>');
+  })
+  $("#sidebar ul#list").html(myArr);
+})
+
+function loadEdge(edgeFontSlug) {
+  var url = 'http://use.edgefonts.net/' + edgeFontSlug + '.js';
+  var script = document.createElement( 'script' );
+  script.type = 'text/javascript';
+  script.src = url;
+  $('head').append( script );
+}
+
+function bindEdge(edgeFontName,edgeFontSlug) {
+  $('li.edge-font').click(function() {
+    $('#list li').removeClass('active');
+    $(this).addClass('active');
+    $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', '"' + edgeFontSlug + '"');
+  });
+}
+</script>
+
+
+ <!--
+  var url = 'http://use.edgefonts.net/' + value.slug + '.js'
+  var script = document.createElement( 'script' );
+  script.type = 'text/javascript';
+  script.src = url;
+  $("head").append( script );
+  function loadEdge() {
+    var url = 'http://use.edgefonts.net/' + value.slug + '.js'
+    var script = document.createElement( 'script' );
+    script.type = 'text/javascript';
+    script.src = url;
+    console.log( script );
+  }
+  -->
+
+
 </head>
 
 
@@ -105,10 +156,9 @@ $(document).ready(function() { // Check Flash version
   <div id="top">
     <a href="/" id="logo"></a>
     <ul id="services">
-      <li><a href="">G</a></li>
-      <li><a class="active" href="">G</a></li>
-      <li><a href="">G</a></li>
-      <li><a href="">G</a></li>
+      <li id="local" class="active">Local Fonts</li>
+      <li id="google">Google Fonts</li>
+      <li id="edge-web-fonts">Edge Web Fonts</li>
     </ul>
     <div class="noprint">
       <p id="status"><span class="toot"></span></p>
@@ -201,6 +251,31 @@ $(document).ready(function() { // Check Flash version
   <div id="font-detect-swf"></div>
 </body>
 
+
+
+<script type="text/javascript">
+  var url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAmlf-g5o1UbrluY5tL8regN11hP87F2zQ'
+
+  $.get(url, function(data) {
+    for(item in data.items) {
+      item = data.items[item]
+      $('#sidebar ul#list').append('<li class="google-font" onclick=\'loadFont("' + item.family + '")\'>' + item.family + '</li>')
+    }
+  }, "json")
+
+  function loadFont(fontFamily){
+    $('#lazyloading').attr('href', '//fonts.googleapis.com/css?family=' + fontFamily);
+    $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', fontFamily);
+  }
+</script>
+
+
+
+
+
+
+
+
 <script>
 var changeSize = function(){
   var text = $('#selectList').val();
@@ -272,6 +347,33 @@ $(".close").click(function () {
   $("#tell").hide();
   $.cookie('m', '1', { expires: 7, path: '/' });
 });
+
+
+
+
+$('ul#services li').click(function() {
+  $("ul#services li.active").removeClass("active");
+  $(this).addClass('active');
+});
+
+$('ul#services li#google').click(function() {
+  $('#sidebar li.font-name').hide();
+  $('#sidebar li.edge-font').hide();
+  $('#sidebar li.google-font').show();
+});
+
+$('ul#services li#local').click(function() {
+  $('#sidebar li.font-name').show();
+  $('#sidebar li.google-font').hide();
+  $('#sidebar li.edge-font').hide();
+});
+
+$('ul#services li#edge-web-fonts').click(function() {
+  $('#sidebar li.edge-font').show();
+  $('#sidebar li.google-font').hide();
+  $('#sidebar li.font-name').hide();
+});
+
 </script>
 
 
