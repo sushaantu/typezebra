@@ -63,7 +63,7 @@ html, body {
   height: 16px;
 }
 
-.slider > .dragger:hover {
+.slider > .dragger:hover , .slider > .dragger:active {
   background: -webkit-linear-gradient(top, #50B95C, #4BC259);
   background: -moz-linear-gradient(top, #50B95C, #3D8F47);
   background: linear-gradient(top, #50B95C, #3D8F47);
