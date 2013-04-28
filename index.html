@@ -341,16 +341,16 @@ $('ul#services li').click(function() {
   $(this).addClass('active');
 });
 
-$('ul#services li#google').click(function() {
-  $('#sidebar li.font-name').hide();
-  $('#sidebar li.edge-font').hide();
-  $('#sidebar li.google-font').show();
-});
-
 $('ul#services li#local').click(function() {
   $('#sidebar li.font-name').show();
   $('#sidebar li.google-font').hide();
   $('#sidebar li.edge-font').hide();
+});
+
+$('ul#services li#google').click(function() {
+  $('#sidebar li.font-name').hide();
+  $('#sidebar li.edge-font').hide();
+  $('#sidebar li.google-font').show();
 });
 
 $('ul#services li#edge-web-fonts').click(function() {
