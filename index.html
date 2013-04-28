@@ -104,50 +104,6 @@ $(document).ready(function() { // Check Flash version
 
 
 
-<script type="text/javascript">
-var myArr = [];
-$.getJSON('edge.json', function(data){
-  $.each(data, function(key, value){
-    edgeFontName = value.name;
-    edgeFontSlug = value.slug;
-    myArr.push('<li class="edge-font">' + edgeFontName + '</li>');
-  })
-  $("#sidebar ul#list").html(myArr);
-})
-
-function loadEdge(edgeFontSlug) {
-  var url = 'http://use.edgefonts.net/' + edgeFontSlug + '.js';
-  var script = document.createElement( 'script' );
-  script.type = 'text/javascript';
-  script.src = url;
-  $('head').append( script );
-}
-
-function bindEdge(edgeFontName,edgeFontSlug) {
-  $('li.edge-font').click(function() {
-    $('#list li').removeClass('active');
-    $(this).addClass('active');
-    $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', '"' + edgeFontSlug + '"');
-  });
-}
-</script>
-
-
- <!--
-  var url = 'http://use.edgefonts.net/' + value.slug + '.js'
-  var script = document.createElement( 'script' );
-  script.type = 'text/javascript';
-  script.src = url;
-  $("head").append( script );
-  function loadEdge() {
-    var url = 'http://use.edgefonts.net/' + value.slug + '.js'
-    var script = document.createElement( 'script' );
-    script.type = 'text/javascript';
-    script.src = url;
-    console.log( script );
-  }
-  -->
-
 
 </head>
 
@@ -158,7 +114,7 @@ function bindEdge(edgeFontName,edgeFontSlug) {
     <ul id="services">
       <li id="local" class="active">Local Fonts</li>
       <li id="google">Google Fonts</li>
-      <li id="edge-web-fonts">Edge Web Fonts</li>
+      <li id="edge-web-fonts">Edge Fonts</li>
     </ul>
     <div class="noprint">
       <p id="status"><span class="toot"></span></p>
@@ -180,10 +136,7 @@ function bindEdge(edgeFontName,edgeFontSlug) {
         <option value="abc">abc...</option>
         <option value="123">123...</option>
       </select>
-      <div class="inv">
-        <input type="text" data-slider-range="10,200" value="60" data-slider="true" id="selectList">
-      </div>
-      <span class="output"></span>
+      <input type="text" data-slider="true" value="60" data-slider-highlight="true" data-slider-range="10,200" id="selectList">
     </div>
     <div id="maintext" contenteditable="true">
       Type Zebra</span> &ndash; Test your fonts in web browser. <span style="color:#8b8b8b;display:block;">You can edit this text.<br><br>
@@ -272,7 +225,30 @@ function bindEdge(edgeFontName,edgeFontSlug) {
 
 
 
+<script type="text/javascript">
+$.getJSON('edge.json', function(data){
+  var items = $();
+  $.each(data, function(key, value){
+    var edgeFontName = value.name;
+    var li = $('<li class="edge-font">' + edgeFontName + '</li>');
+    li.data('edgeFontSlug', value.slug);
+    items = items.add(li);
+  })
+  $("#sidebar ul#list").empty().append(items)
+    .on('click', 'li.edge-font', function() {
+      loadEdge( $(this).data('edgeFontSlug') );
+    });
+});
 
+function loadEdge(edgeFontSlug) {
+  var url = 'http://use.edgefonts.net/' + edgeFontSlug + '.js';
+  var script = document.createElement( 'script' );
+  script.type = 'text/javascript';
+  script.src = url;
+  $('head').append( script );
+  $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', edgeFontSlug);
+}
+</script>
 
 
 
@@ -291,6 +267,7 @@ var changeMode = function(){
   if (value == "usertext") {
     $('#maintext').show();
     $('.slider').show();
+    $('.output').show();
     $('#alphabets').hide();
     $('#numbers').hide();
     $('#smalls').hide();
@@ -299,6 +276,7 @@ var changeMode = function(){
   else if(value == "abc") {
     $('#smalls').show();
     $('.slider').show();
+    $('.output').show();
     $('#maintext').hide();
     $('#alphabets').hide();
     $('#numbers').hide();
@@ -307,6 +285,7 @@ var changeMode = function(){
   else if(value == "123") {
     $('#numbers').show();
     $('.slider').show();
+    $('.output').show();
     $('#maintext').hide();
     $('#alphabets').hide();
     $('#smalls').hide();
@@ -318,12 +297,13 @@ var changeMode = function(){
     $('#alphabets').hide();
     $('#smalls').hide();
     $('#numbers').hide();
-    $('#selectList').hide();
     $('.slider').hide();
+    $('.output').hide();
   }
   else {
     $('#alphabets').show();
     $('.slider').show();
+    $('.output').show();
     $('#maintext').hide();
     $('#numbers').hide();
     $('#smalls').hide();
@@ -373,6 +353,22 @@ $('ul#services li#edge-web-fonts').click(function() {
   $('#sidebar li.google-font').hide();
   $('#sidebar li.font-name').hide();
 });
+
+</script>
+
+<script>
+$("[data-slider]")
+  .each(function () {
+    var input = $(this);
+    $("<span>")
+      .addClass("output")
+      .insertAfter($(this));
+  })
+  .bind("slider:ready slider:changed", function (event, data) {
+    $(this)
+      .nextAll(".output:first")
+        .html(data.value.toFixed(0));
+  });
 
 </script>
 

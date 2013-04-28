@@ -106,6 +106,13 @@ var onFontDetectReady = function(swfObjectId) {
 
 
 
+
+
+
+
+
+
+
 /*
  jQuery Simple Slider
 
@@ -130,7 +137,8 @@ var __slice = [].slice,
         snapMid: false,
         classPrefix: null,
         classSuffix: null,
-        theme: null
+        theme: null,
+        highlight: false
       };
       this.settings = $.extend({}, this.defaultOptions, options);
       if (this.settings.theme) {
@@ -145,39 +153,40 @@ var __slice = [].slice,
       if (this.input.attr("id")) {
         this.slider.attr("id", this.input.attr("id") + "-slider");
       }
-      this.track = $("<div>").addClass("track").css({
-        position: "absolute",
-        top: "50%",
-        width: "100%",
-        userSelect: "none",
-        cursor: "pointer"
-      }).appendTo(this.slider);
-      this.dragger = $("<div>").addClass("dragger").css({
-        position: "absolute",
-        top: "50%",
-        userSelect: "none",
-        cursor: "pointer"
-      }).appendTo(this.slider);
+      this.track = this.createDivElement("track").css({
+        width: "100%"
+      });
+      if (this.settings.highlight) {
+        this.highlightTrack = this.createDivElement("highlight-track").css({
+          width: "0"
+        });
+      }
+      this.dragger = this.createDivElement("dragger");
       this.slider.css({
-        //minHeight: this.dragger.outerHeight(),
+        minHeight: this.dragger.outerHeight(),
         marginLeft: this.dragger.outerWidth() / 2,
         marginRight: this.dragger.outerWidth() / 2
       });
       this.track.css({
         marginTop: this.track.outerHeight() / -2
       });
+      if (this.settings.highlight) {
+        this.highlightTrack.css({
+          marginTop: this.track.outerHeight() / -2
+        });
+      }
       this.dragger.css({
         marginTop: this.dragger.outerWidth() / -2,
         marginLeft: this.dragger.outerWidth() / -2
       });
       this.track.mousedown(function(e) {
-        if (e.which !== 1) {
-          return;
-        }
-        _this.domDrag(e.pageX, e.pageY, true);
-        _this.dragging = true;
-        return false;
+        return _this.trackEvent(e);
       });
+      if (this.settings.highlight) {
+        this.highlightTrack.mousedown(function(e) {
+          return _this.trackEvent(e);
+        });
+      }
       this.dragger.mousedown(function(e) {
         if (e.which !== 1) {
           return;
@@ -187,7 +196,7 @@ var __slice = [].slice,
         _this.domDrag(e.pageX, e.pageY);
         return false;
       });
-      $(window).mousemove(function(e) {
+      $("body").mousemove(function(e) {
         if (_this.dragging) {
           _this.domDrag(e.pageX, e.pageY);
           return $("body").css({
@@ -220,6 +229,17 @@ var __slice = [].slice,
       });
     }
 
+    SimpleSlider.prototype.createDivElement = function(classname) {
+      var item;
+      item = $("<div>").addClass(classname).css({
+        position: "absolute",
+        top: "50%",
+        userSelect: "none",
+        cursor: "pointer"
+      }).appendTo(this.slider);
+      return item;
+    };
+
     SimpleSlider.prototype.setRatio = function(ratio) {
       var value;
       ratio = Math.min(1, ratio);
@@ -235,6 +255,15 @@ var __slice = [].slice,
       ratio = this.valueToRatio(value);
       this.setSliderPositionFromValue(value);
       return this.valueChanged(value, ratio, "setValue");
+    };
+
+    SimpleSlider.prototype.trackEvent = function(e) {
+      if (e.which !== 1) {
+        return;
+      }
+      this.domDrag(e.pageX, e.pageY, true);
+      this.dragging = true;
+      return false;
     };
 
     SimpleSlider.prototype.domDrag = function(pageX, pageY, animate) {
@@ -263,13 +292,23 @@ var __slice = [].slice,
         animate = false;
       }
       if (animate && this.settings.animate) {
-        return this.dragger.animate({
+        this.dragger.animate({
           left: position
         }, 200);
+        if (this.settings.highlight) {
+          return this.highlightTrack.animate({
+            width: position
+          }, 200);
+        }
       } else {
-        return this.dragger.css({
+        this.dragger.css({
           left: position
         });
+        if (this.settings.highlight) {
+          return this.highlightTrack.css({
+            width: position
+          });
+        }
       }
     };
 
@@ -427,10 +466,21 @@ var __slice = [].slice,
       if ($el.data("slider-theme")) {
         settings.theme = $el.data("slider-theme");
       }
+      if ($el.attr("data-slider-highlight")) {
+        settings.highlight = $el.data("slider-highlight");
+      }
+      if ($el.data("slider-animate") != null) {
+        settings.animate = $el.data("slider-animate");
+      }
       return $el.simpleSlider(settings);
     });
   });
 })(this.jQuery || this.Zepto, this);
+
+
+
+
+
 
 
 
