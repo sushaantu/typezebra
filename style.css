@@ -3,7 +3,9 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 100%;
   overflow: hidden;
+  text-rendering: optimizeLegibility;
 }
+
 html, body {
     height: 100%
 }
