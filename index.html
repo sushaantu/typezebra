@@ -61,6 +61,7 @@ function bindClick(nameNode) {
   $(nameNode).click(function() {
     $('#list li').removeClass('active');
     $(this).addClass('active');
+    _gaq.push(['_trackEvent', 'Local', 'click', $(this).attr('data-name')]);
     $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', '"' + $(this).attr('data-name') + '"');
   });
 } 
@@ -212,14 +213,16 @@ $(document).ready(function() { // Check Flash version
   $.get(url, function(data) {
     for(item in data.items) {
       item = data.items[item]
-      $('#sidebar ul#list').append('<li class="google-font" onclick=\'loadFont("' + item.family + '")\'>' + item.family + '</li>')
+      $('#sidebar ul#list').append('<li class="google-font" onclick=\'loadFont("' + item.family + '", this)\'>' + item.family + '</li>')
     }
   }, "jsonp")
 
-  function loadFont(fontFamily){
+  function loadFont(fontFamily, element){
+    $('#list li').removeClass('active');
+    $(element).addClass('active');
     $('#lazyloading').attr('href', '//fonts.googleapis.com/css?family=' + fontFamily);
     $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', fontFamily);
-     _gaq.push(['_trackEvent', 'Google and Local Fonts', 'click', fontFamily ]);
+     _gaq.push(['_trackEvent', 'Google', 'click', fontFamily]);
   }
 </script>
 
