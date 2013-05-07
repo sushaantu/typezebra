@@ -219,6 +219,7 @@ $(document).ready(function() { // Check Flash version
   function loadFont(fontFamily){
     $('#lazyloading').attr('href', '//fonts.googleapis.com/css?family=' + fontFamily);
     $('#alphabets, #smalls, #maintext, #numbers, #para1').css('font-family', fontFamily);
+     _gaq.push(['_trackEvent', 'Google and Local Fonts', 'click', fontFamily ]);
   }
 </script>
 
@@ -239,6 +240,7 @@ $.getJSON('edge.json', function(data){
       $('#list li').removeClass('active');
       $(this).addClass('active');
       loadEdge( $(this).data('edgeFontSlug') );
+      _gaq.push(['_trackEvent', 'Edge Fonts', 'click', $(this).text()]);
     });
 });
 
