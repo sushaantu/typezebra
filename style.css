@@ -311,21 +311,6 @@ a#logo {
 }
 .arrow_box h3 {text-align: center;}
 .arrow_box a {text-decoration: none; color: #50B95C;}
-.rotate {
-  -webkit-animation-name: cssAnimation;
-  -webkit-animation-duration: .3s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-transform: rotate(45deg);
-  -webkit-transition: none;
-}
-@-webkit-keyframes cssAnimation {
-  from {
-    -webkit-transform: rotate(0);
-  }
-  to {
-    -webkit-transform: rotate(45deg);
-  }
-}
 
 #tell {
   position: absolute;
@@ -450,5 +435,19 @@ ul#services li:hover {
   display: none ;
 }
 
-
+.rotate {
+  -webkit-animation-name: cssAnimation;
+  -webkit-animation-duration: .3s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: none;
+}
+@-webkit-keyframes cssAnimation {
+  from {
+    -webkit-transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(45deg);
+  }
+}
 
