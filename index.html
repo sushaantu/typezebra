@@ -120,7 +120,7 @@ function bindKeyPress() {
     <div class="noprint">
       <p id="status"><span class="toot"></span></p>
     </div>
-    <div id="tell"><a rel="nofollow" href="https://chrome.google.com/webstore/detail/type-zebra/jmdiammbeecojdgoiecmhfmkmafdomdm" target="_blank">Now available in Chrome Web Store</a><span class="close">&times;</span></div>
+    <div id="tell"></div>
     <span id="clickinfo">+</span>
   </div>
   <div id="sidebar">
@@ -140,7 +140,7 @@ function bindKeyPress() {
       <input type="text" data-slider="true" value="60" data-slider-highlight="true" data-slider-range="10,200" id="selectList">
     </div>
     <div id="maintext" contenteditable="true">
-      Type Zebra</span> &ndash; Test your fonts in web browser. <span style="color:#8b8b8b;display:block;">You can edit this text.<br><br>
+      Type Zebra</span> &ndash; Test your fonts in web browser. <span class="edit">You can edit this text.<br><br>
       Or you can change mode from select menu on top.</span>
     </div>
     <div id="alphabets" style="display:none;"><script type="text/javascript">document.write(letters)</script></div>
@@ -148,7 +148,7 @@ function bindKeyPress() {
     <div id="numbers" style="display:none;"><script type="text/javascript">document.write(nums)</script></div>
     <div id="para1" style="display:none;">
       <h1>Font testing made easy</h1>
-      <p class="intro">Type different fonts and see how they look automatically. Try &amp; compare them visually before using them in your logos and typography oriented designs.</p>
+      <h2 class="intro">Type different fonts and see how they look automatically. Try &amp; compare them visually before using them in your logos and typography oriented designs.</h2>
       <p class="first">Alice opened the door and found that it led into a small passage, not much larger than a rat-hole: she knelt down and looked along the passage into the loveliest garden you ever saw. How she longed to get out of that dark hall, and wander about among those beds of bright flowers and those cool fountains, but she could not even get her head through the doorway; "and even if my head would go through," thought poor Alice, "it would be of very little use without my shoulders.</p>
       <p>After a time she heard a little pattering of feet. In the distance, and she hastily dried her eyes to see what was coming. It was the White Rabbit returning, splendidly dressed, with a pair of white kid-gloves in one hand and a large fan in the other: he came trotting along in a great hurry, muttering to himself, as he came, "Oh! The Duchess, the Duchess! Oh! Won't she be savage if I've kept her waiting!"</p>
       <blockquote>"Begin at the beginning," the King said, very gravely, "and go on till you come to the end: then stop."<br /></blockquote>
@@ -375,8 +375,6 @@ $("[data-slider]")
       .nextAll(".output:first")
         .html(data.value.toFixed(0));
   });
-
-
 </script>
 
 
