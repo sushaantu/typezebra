@@ -227,7 +227,6 @@ a#logo {
 #para1 h1 {
   font-size: 63px;
   line-height: 100px;
-  margin-bottom: 25px;
   font-style: normal;
   font-weight: 400;
 }
@@ -244,22 +243,13 @@ a#logo {
   margin-bottom: 0px;
   text-indent: 16px;
 }
-#para1 p.author {
-  text-indent: 0px;
-  margin-bottom: 25px;
-  font-size: 17px;
-  letter-spacing: 1px;
-  color: #666464;
-  font-style: normal;
-  font-weight: 400;
-}
 #para1 p.first {
   text-indent: 0px;
 }
 #para1 p.intro {
   text-indent: 0px;
   margin-bottom: 25px;
-  line-height: 50px;
+  line-height: 33px;
   font-size: 23px;
   font-style: normal;
   font-weight: 400;
