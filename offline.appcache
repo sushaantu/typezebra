@@ -5,7 +5,7 @@ CACHE:
 http://typezebra.com/index.html
 http://typezebra.com/favicon.ico
 http://typezebra.com/style.css
-http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
+https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
 http://typezebra.com/js/jquery.min.js
 http://typezebra.com/js/app.js
 http://typezebra.com/flash/FontList.swf
