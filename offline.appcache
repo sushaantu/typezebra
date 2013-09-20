@@ -1,15 +1,17 @@
 CACHE MANIFEST
-# 20/9/2013:v1
+# 20/9/2013:v1.1
 
 CACHE:
 http://typezebra.com/index.html
+http://typezebra.com/favicon.ico
 http://typezebra.com/style.css
-http://typezebra.com/flash/FontList.swf
-http://typezebra.com/js/app.js
 http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
+http://typezebra.com/js/jquery.min.js
+http://typezebra.com/js/app.js
+http://typezebra.com/flash/FontList.swf
 http://typezebra.com/edge.json
 http://www.google-analytics.com/ga.js
-http://typezebra.com/favicon.ico
+https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAmlf-g5o1UbrluY5tL8regN11hP87F2zQ&callback=jQuery1830472758048446849_1379720565950&_=1379720565961
 
 NETWORK:
 *
