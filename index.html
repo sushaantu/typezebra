@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html manifest="manifest.appcache" lang="en">
 <head>
 <meta charset="utf-8">
 <title>Type Zebra - Font Tester | Test fonts online in a web browser</title>
@@ -25,6 +25,11 @@ if (typeof jQuery == 'undefined'){
 }
 </script>
 <script rel="subresource" src="js/app.js"></script>
+<!--
+<script rel="subresource" src="js/font-detect.js"></script>
+<script rel="subresource" src="js/swfobject.js"></script>
+<script rel="subresource" src="js/simple-slider.js"></script>
+-->
 
 <script>
 $(document).ready(function() { // Check Flash version
@@ -325,6 +330,7 @@ $('span#clickinfo').click(function() {
     $(this).toggleClass('rotate');
 });
 
+/*
 if ( $.cookie('m') == '1' ) {
   $("#tell").hide();
 }
@@ -333,6 +339,7 @@ $(".close").click(function () {
   $("#tell").hide();
   $.cookie('m', '1', { expires: 7, path: '/' });
 });
+*/
 </script>
 
 
