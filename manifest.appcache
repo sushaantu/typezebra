@@ -1,14 +1,2 @@
 CACHE MANIFEST
-# 20/9/2013:v1.0.2
-
-CACHE:
-http://typezebra.com/index.html
-http://typezebra.com/style.css
-http://typezebra.com/js/app.js
-http://typezebra.com/flash/FontList.swf
-
-NETWORK:
-*
-
-FALLBACK:
-http://typezebra.com/fallback.html
+# 20/9/2013:v1.0.3
