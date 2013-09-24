@@ -378,5 +378,14 @@ $("[data-slider]")
         .html(data.value.toFixed(0));
   });
 </script>
+<script type="text/javascript">
+if (window.applicationCache) {
+  applicationCache.addEventListener('updateready', function() {
+      if (confirm('An update is available. Reload now?')) {
+          window.location.reload();
+      }
+  });
+}
+</script>
 
 </html>
