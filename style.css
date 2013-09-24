@@ -288,12 +288,12 @@ h2.intro {
 
 #tell {
   position: absolute;
-  top: -4px;
-  right: 200px;
+  top: 24px;
+  right: 63px;
   font-size: 14px;
   background: #50B95C;
-  padding: 7px 27px 3px 10px;
-  border-radius: 3px;
+  padding: 4px 10px;
+  border-radius: 17px;
 }
 
 #tell a {

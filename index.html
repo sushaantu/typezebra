@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="manifest.appcache" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Type Zebra - Font Tester | Test fonts online in a web browser</title>
@@ -120,9 +120,9 @@ function bindKeyPress() {
     <div class="noprint">
       <p id="status"><span class="toot"></span></p>
     </div>
-    <!--
-    <div id="tell"></div>
-    -->
+    <div id="tell">      
+      <a href="http://gum.co/YtXQ">Shop</a> <script type="text/javascript" src="https://gumroad.com/js/gumroad.js"></script>
+    </div>
     <span id="clickinfo">+</span>
   </div>
   <div id="sidebar">
@@ -393,15 +393,6 @@ $("[data-slider]")
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-</script>
-<script type="text/javascript">
-if (window.applicationCache) {
-  applicationCache.addEventListener('updateready', function() {
-      if (confirm('An update is available. Reload now?')) {
-          window.location.reload();
-      }
-  });
-}
 </script>
 
 </html>

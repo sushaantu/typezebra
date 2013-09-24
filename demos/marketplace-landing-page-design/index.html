@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marketplace Landing Page</title>
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/holder.min.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <header>
+      <a href="index.html" id="logo"></a>
+    </header>
+
+    <div id="page">
+      <div class="left marketing">
+        <span>We are changing the type industry. Here's why.</span>
+
+        <p class="define">Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit. Officiis, sunt dolorem dicta eum enim illum animi voluptates illo
+        numquam ipsum eveniet laborum consequuntur minima quisquam et odit
+        delectus. Iure, sit. Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Molestias, quos at error modi debitis ratione
+        inventore nulla minima illo reprehenderit culpa cum tempore blanditiis
+        corporis sapiente vitae cupiditate sunt fuga.</p>
+
+        <p class="contact"><a href="mailto:hi@typezebra.com">Contact us</a> if you have any questions.</p>
+      </div>
+
+      <div class="right action">
+        <a class="right action toggletext" href="#">Are you a buyer?</a>
+        <a class="right action toggletext" href="#" style="display:none;">Are
+        you a seller?</a>
+
+        <div class="clear"></div>
+
+        <div class="sparrow" id="content">
+          <div class="front">
+            <div style="width: 2050px; margin-left: 0px;">
+              <div class="slide slide1" style="display:inline-block;">
+                <h4 class="slide_heading">Sellers</h4>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit.</p>
+
+                <ul>
+                  <li class="clearfix">
+                    <img src="js/holder.js/64x64">
+
+                    <p>Sollicitudin Parturient Porta Magna Vehicula</p>
+                  </li>
+
+                  <li class="clearfix">
+                    <img src="js/holder.js/64x64">
+
+                    <p>Sollicitudin Parturient Porta Magna Vehicula</p>
+                  </li>
+
+                  <li class="clearfix">
+                    <img src="js/holder.js/64x64">
+
+                    <p>Sollicitudin Parturient Porta Magna Vehicula</p>
+                  </li>
+                </ul><a class="btn cta center next" href="javascript:;"
+                onclick="scroll_back();">Start Selling</a>
+              </div>
+
+              <div class="slide slide2" style="display:inline-block;">
+                <form>
+                  <fieldset>
+                    <legend>Create Account</legend> <label>First Name</label>
+                    <input type="text"> <label>Last Name</label> <input type=
+                    "text"> <label>Email</label> <input id="inputEmail"
+                    placeholder="Email" type="text"> <label>Password</label>
+                    <input type="password"> <label>Confirm Password</label>
+                    <input type="password">
+
+                    <div class="checkbox">
+                      <label><input type="checkbox"> I agree with Terms and
+                      Conditions</label>
+                    </div>
+
+                    <p class="clearfix back-next"><a class="btn" href=
+                    "javascript:;" onclick="scroll_next();">Back</a> <a class=
+                    "btn right" href="javascript:;" onclick=
+                    "scroll_back_1();">Next</a></p>
+                  </fieldset>
+                </form>
+              </div>
+
+              <div class="slide slide3" style="display:inline-block">
+                <h4 class="slide_heading">Thank You!</h4><img class="success" src=
+                "img/success.png">
+
+                <p class="saved">Your entry has been saved. We will inform you
+                when it goes live.</p>
+                <textarea rows="5">
+</textarea> <a class="btn right" href="">Share it with your friends</a>
+              </div>
+            </div>
+          </div><!-- .front ends here -->
+
+          <div class="back">
+            <div style="width: 1230px; margin-left: 0px;">
+              <div class="slide slide4" style="display:inline-block;">
+                <h4 class="slide_heading">Buyers</h4>
+
+                <ol>
+                  <li>
+                    <p>Sollicitudin Parturient Porta Magna Vehicula</p>
+                  </li>
+
+                  <li>
+                    <p>Sollicitudin Parturient Porta Magna Vehicula</p>
+                  </li>
+
+                  <li>
+                    <p>Sollicitudin Parturient Porta Magna Vehicula</p>
+                  </li>
+                </ol>
+
+                <a class="btn cta center next" href="javascript:;"
+                onclick="scroll_back_4();">Start Buying</a>
+              </div>
+
+              <div class="slide slide5" style="display:inline-block;">
+                <h4 class="slide_heading">Leave your email</h4>
+
+                <p>We are not ready yet but leave your email address so we can contact you when we are ready.</p>
+
+                <form>
+                  <input placeholder="email address" type="text">
+                </form>
+
+                <p class="clearfix back-next"><a class="btn" href=
+                "javascript:;" onclick="scroll_next_1();">Back</a> <a class=
+                "btn right" href="javascript:;" onclick=
+                "scroll_back_5();">Next</a></p>
+              </div>
+
+              <div class="slide slide6" style="display:inline-block;">
+                <h4 class="slide_heading">Thank You!</h4><img class="success" src=
+                "img/success.png">
+
+                <p class="saved">Your entry has been saved. We will inform you
+                when it goes live.</p>
+                <textarea></textarea> 
+                <a class="btn right" href="">Share it with your friends</a>
+              </div>
+            </div>
+          </div>
+        </div><!-- #content ends here -->
+      </div><!-- .right ends here -->
+
+      <div class="clear"></div>
+    </div><!-- #page ends here -->
+  </div><!-- #wrap ends -->
+  <script type="text/javascript">
+// Front side "prev" and "next" buttons
+  function scroll_back(){
+    $(".front>div:eq(0)").stop().animate({"margin-left":"-375px"},150);
+  }
+
+  function scroll_back_1(){
+    $(".front>div:eq(0)").stop().animate({"margin-left":"-750px"},150);
+  }
+
+  function scroll_back_2(){
+    $(".front>div:eq(0)").stop().animate({"margin-left":"-1125px"},150);
+  }
+
+  function scroll_next(){
+    $(".front > div:eq(0)").stop().animate({"margin-left":"0px"},150);
+  }
+
+  // Back side "prev" and "next" buttons
+  function scroll_back_4(){
+    $(".back>div:eq(0)").stop().animate({"margin-left":"-375px"},150);
+  }
+
+  function scroll_back_5(){
+    $(".back> div:eq(0)").stop().animate({"margin-left":"-750px"},150);
+  }
+
+  function scroll_next_1(){
+    $(".back > div:eq(0)").stop().animate({"margin-left":"0px"},150);
+  }
+
+  </script> <script type="text/javascript">
+$(document).ready(function(){
+    $('a.action').click(function(e){
+      $('.toggletext').toggle();
+      $('.sparrow').toggleClass('flip');
+      e.preventDefault();
+    });
+  });
+  </script>
+</body>
+</html>
