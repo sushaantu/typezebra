@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Type Zebra Version 2 : Under Cosntruction</title>
   <style type="text/css">
+  #content {float: right; width: 50%;position: fixed;top: 0;right: 0;}
+  #sidebar {float: left; width: 30%;}
   .google-font {
     color: green;
   }
@@ -29,6 +31,8 @@
     </ul>
   </div>
 
+  <div id="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, quod quasi adipisci consequatur commodi vitae corporis aliquam rem sapiente beatae ex ipsum sunt sint. Sint, labore in molestias dolor dignissimos.</div>
+
 
 <script>
 $(document).ready(function() { // Check Flash version
@@ -52,6 +56,7 @@ function loadFonts(fd) {
     var nameNode = document.createElement("li");
     $(nameNode).addClass("font-name").attr('data-name', name).html(name);
     $("#list").append(nameNode);
+    bindClick(nameNode);
   }
 }
 
@@ -71,7 +76,7 @@ function loadFonts(fd) {
 
   function loadFont(fontFamily, element){
     $('#lazyloading').attr('href', '//fonts.googleapis.com/css?family=' + fontFamily);
-    $('#alphabets').css('font-family', fontFamily);
+    $('#content').css('font-family', fontFamily);
   }
 </script>
 
@@ -101,11 +106,14 @@ function loadEdge(edgeFontSlug) {
   script.type = 'text/javascript';
   script.src = url;
   $('head').append( script );
-  $('#alphabets').css('font-family', edgeFontSlug);
+  $('#content').css('font-family', edgeFontSlug);
 }
 </script>
 
 
 <div id="font-detect-swf"></div>
+
+
+
 </body>
 </html>
