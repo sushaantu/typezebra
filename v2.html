@@ -35,16 +35,22 @@
 
 
 <script>
+/*
 $(document).ready(function() { // Check Flash version
   if (!swfobject.hasFlashPlayerVersion("9.0.0"))
-    $("#status .toot").html("You don't have a compatible version of Flash installed. Please install latest version of Flash and refresh this page.");
+    $("#status").html("You don't have a compatible version of Flash installed. Please install latest version of Flash and refresh this page.");
   else {
-    $("#status .toot").html("Loading your fonts...")
+    $("#status").html("Loading your fonts...")
     var fontDetect = new FontDetect("font-detect-swf", "flash/FontList.swf", function(fd) {
       loadFonts(fd);
     });
   }
 });
+*/
+
+var fontDetect = new FontDetect("font-detect-swf", "flash/FontList.swf", function(fd) {
+      loadFonts(fd);
+    });
 
 
 var fonts;
