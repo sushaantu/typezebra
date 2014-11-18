@@ -402,18 +402,8 @@ ul#services li:hover {
   display: none ;
 }
 
-.rotate {
-  -webkit-animation-name: cssAnimation;
-  -webkit-animation-duration: .3s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-transform: rotate(45deg);
-  -webkit-transition: none;
-}
-@-webkit-keyframes cssAnimation {
-  from {
-    -webkit-transform: rotate(0);
-  }
-  to {
-    -webkit-transform: rotate(45deg);
-  }
+.cb-tip-button {
+  position: absolute;
+  left: 207px;
+  top: 22px;
 }
