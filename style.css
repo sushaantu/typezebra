@@ -367,19 +367,20 @@ h2.intro {
 
 ul#services {
   list-style: none;
-  margin-left: 324px;
+  margin-left: 6px;
   float: left;
-  margin-top: 17px;
+  margin-top: 2px;
 }
 
 ul#services li {
   display: inline-block;
   float: left;
-  color: white;
+  color: #fff;
   text-align: center;
-  padding: 8px 16px;
+  padding: 4px 12px;
   text-decoration: none;
   background-color: #50B95C;
+  font-size: 15px;
 }
 
 ul#services li:first-child {
