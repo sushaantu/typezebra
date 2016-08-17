@@ -29,7 +29,14 @@ html, body {
 }
 
 .carbonad-text {
-  margin-left: 48px !important;
+  margin-left: 148px !important;
+}
+
+.carbonad-tag {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  float: none;
 }
 
 #top {
